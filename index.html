@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">@</div>
+            <div class="menu">☰</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Home Screen (Default) -->
+            <div class="screen active" id="home">
+                <div class="post" onclick="toggleLike(this)">
+                    <div class="post-header">
+                        <div class="avatar">👩💻</div>
+                        <div class="user-info">
+                            <span class="name">Ana García</span>
+                            <span class="username">@ana_garcia • 2h</span>
+                        </div>
+                    </div>
+                    <div class="post-content">Trabajando en un nuevo proyecto increíble. ¡No puedo esperar a compartirlo con ustedes! 🚀</div>
+                    <div class="post-actions">
+                        <span class="action">❤️ 24</span>
+                        <span class="action">💬 5</span>
+                        <span class="action">🔄 2</span>
+                    </div>
+                </div>
+
+                <div class="post" onclick="toggleLike(this)">
+                    <div class="post-header">
+                        <div class="avatar">👨💼</div>
+                        <div class="user-info">
+                            <span class="name">Carlos López</span>
+                            <span class="username">@carlos_dev • 4h</span>
+                        </div>
+                    </div>
+                    <div class="post-content">La tecnología está cambiando tan rápido. Es emocionante ser parte de esta revolución digital.</div>
+                    <div class="post-actions">
+                        <span class="action">❤️ 18</span>
+                        <span class="action">💬 3</span>
+                        <span class="action">🔄 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Screen -->
+            <div class="screen" id="search">
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar usuarios, hashtags..." class="search-input">
+                </div>
+                <div class="tabs">
+                    <button class="tab active">Todo</button>
+                    <button class="tab">Usuarios</button>
+                    <button class="tab">Hashtags</button>
+                </div>
+                <div class="search-results">
+                    <div class="result-item">
+                        <div class="avatar">👤</div>
+                        <div class="result-info">
+                            <div class="name">Ana García</div>
+                            <div class="username">@ana_garcia • 1.2K seguidores</div>
+                        </div>
+                    </div>
+                    <div class="result-item">
+                        <div class="avatar hashtag">#</div>
+                        <div class="result-info">
+                            <div class="name">#tecnología</div>
+                            <div class="username">45.2K posts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Screen -->
+            <div class="screen" id="post">
+                <div class="post-header-bar">
+                    <button class="cancel-btn">Cancelar</button>
+                    <span class="title">Nuevo thread</span>
+                    <button class="post-btn" onclick="createPost()">Publicar</button>
+                </div>
+                <div class="compose-area">
+                    <div class="user-section">
+                        <div class="avatar">👤</div>
+                        <div class="user-info">
+                            <div class="name">Tu nombre</div>
+                            <div class="username">@tu_usuario</div>
+                        </div>
+                    </div>
+                    <textarea placeholder="¿Qué está pasando?" class="compose-input" id="composeText" oninput="updateCounter()"></textarea>
+                    <div class="compose-footer">
+                        <div class="actions">
+                            <span class="action-btn">📷</span>
+                            <span class="action-btn">🖼️</span>
+                            <span class="action-btn">📍</span>
+                        </div>
+                        <span class="counter" id="counter">0/280</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Screen -->
+            <div class="screen" id="activity">
+                <div class="tabs">
+                    <button class="tab active">Todo</button>
+                    <button class="tab">Menciones</button>
+                    <button class="tab">Me gusta</button>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">❤️</div>
+                        <div class="activity-content">
+                            <span class="activity-text"><strong>Ana García</strong> le gustó tu thread</span>
+                            <div class="activity-time">2h</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">💬</div>
+                        <div class="activity-content">
+                            <span class="activity-text"><strong>Carlos López</strong> respondió a tu thread</span>
+                            <div class="activity-time">4h</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <span class="activity-text"><strong>María Silva</strong> comenzó a seguirte</span>
+                            <div class="activity-time">1d</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div class="screen" id="profile">
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <div class="profile-name">Tu nombre</div>
+                        <div class="profile-username">@tu_usuario</div>
+                    </div>
+                    <div class="profile-avatar">👤</div>
+                </div>
+                <div class="profile-bio">Desarrollador apasionado por la tecnología. Creando el futuro una línea de código a la vez. 🚀</div>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <div class="stat-number">1.2K</div>
+                        <div class="stat-label">seguidores</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">890</div>
+                        <div class="stat-label">siguiendo</div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn">Editar perfil</button>
+                <div class="tabs">
+                    <button class="tab active">Threads</button>
+                    <button class="tab">Respuestas</button>
+                    <button class="tab">Reposts</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="showScreen('home')">🏠</button>
+            <button class="nav-btn" onclick="showScreen('search')">🔍</button>
+            <button class="nav-btn" onclick="showScreen('post')">➕</button>
+            <button class="nav-btn" onclick="showScreen('activity')">🔔</button>
+            <button class="nav-btn" onclick="showScreen('profile')">👤</button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
