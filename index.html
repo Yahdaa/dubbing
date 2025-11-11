@@ -3,50 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threads App</title>
+    <title>Threads - Social Network</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app">
         <!-- Header -->
         <header class="header">
-            <div class="logo">@</div>
-            <div class="menu">☰</div>
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fab fa-threads"></i>
+                    <span>Threads</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" onclick="toggleNotifications()">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notificationBadge">3</span>
+                </button>
+                <button class="header-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </header>
+
+        <!-- Live Status Bar -->
+        <div class="status-bar">
+            <div class="live-indicator">
+                <div class="pulse"></div>
+                <span>En vivo</span>
+            </div>
+            <div class="online-count">
+                <i class="fas fa-users"></i>
+                <span id="onlineCount">1,247</span> usuarios activos
+            </div>
+        </div>
 
         <!-- Main Content -->
         <main class="main-content" id="mainContent">
             <!-- Home Screen (Default) -->
             <div class="screen active" id="home">
-                <div class="post" onclick="toggleLike(this)">
-                    <div class="post-header">
-                        <div class="avatar">👩💻</div>
-                        <div class="user-info">
-                            <span class="name">Ana García</span>
-                            <span class="username">@ana_garcia • 2h</span>
+                <!-- Stories Section -->
+                <div class="stories-section">
+                    <div class="story add-story" onclick="addStory()">
+                        <div class="story-avatar">
+                            <i class="fas fa-plus"></i>
                         </div>
+                        <span>Tu historia</span>
                     </div>
-                    <div class="post-content">Trabajando en un nuevo proyecto increíble. ¡No puedo esperar a compartirlo con ustedes! 🚀</div>
-                    <div class="post-actions">
-                        <span class="action">❤️ 24</span>
-                        <span class="action">💬 5</span>
-                        <span class="action">🔄 2</span>
+                    <div class="story" onclick="viewStory('ana')">
+                        <div class="story-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Ana">
+                            <div class="story-ring"></div>
+                        </div>
+                        <span>Ana</span>
+                    </div>
+                    <div class="story" onclick="viewStory('carlos')">
+                        <div class="story-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Carlos">
+                            <div class="story-ring"></div>
+                        </div>
+                        <span>Carlos</span>
+                    </div>
+                    <div class="story" onclick="viewStory('maria')">
+                        <div class="story-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="María">
+                            <div class="story-ring"></div>
+                        </div>
+                        <span>María</span>
                     </div>
                 </div>
 
-                <div class="post" onclick="toggleLike(this)">
-                    <div class="post-header">
-                        <div class="avatar">👨💼</div>
-                        <div class="user-info">
-                            <span class="name">Carlos López</span>
-                            <span class="username">@carlos_dev • 4h</span>
+                <!-- Posts Feed -->
+                <div class="posts-feed" id="postsFeed">
+                    <div class="post" data-post-id="1">
+                        <div class="post-header">
+                            <div class="post-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Ana García">
+                                <div class="online-indicator"></div>
+                            </div>
+                            <div class="post-user-info">
+                                <div class="post-name">Ana García <i class="fas fa-check-circle verified"></i></div>
+                                <div class="post-meta">
+                                    <span class="username">@ana_garcia</span>
+                                    <span class="separator">•</span>
+                                    <span class="timestamp" data-time="2024-01-15T10:30:00Z">2h</span>
+                                    <span class="separator">•</span>
+                                    <span class="location"><i class="fas fa-map-marker-alt"></i> Madrid, España</span>
+                                </div>
+                            </div>
+                            <div class="post-options">
+                                <button class="options-btn" onclick="showPostOptions(1)">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>Trabajando en un nuevo proyecto increíble con IA y machine learning. ¡No puedo esperar a compartirlo con ustedes! 🚀</p>
+                            <div class="post-media">
+                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop" alt="Proyecto" class="post-image">
+                            </div>
+                            <div class="post-tags">
+                                <span class="tag">#IA</span>
+                                <span class="tag">#MachineLearning</span>
+                                <span class="tag">#Tech</span>
+                            </div>
+                        </div>
+                        <div class="post-stats">
+                            <span class="stat"><i class="fas fa-heart"></i> 247</span>
+                            <span class="stat"><i class="fas fa-comment"></i> 23</span>
+                            <span class="stat"><i class="fas fa-retweet"></i> 12</span>
+                            <span class="stat"><i class="fas fa-eye"></i> 1.2K</span>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn like-btn" onclick="toggleLike(this, 1)">
+                                <i class="far fa-heart"></i>
+                                <span>247</span>
+                            </button>
+                            <button class="action-btn comment-btn" onclick="toggleComments(1)">
+                                <i class="far fa-comment"></i>
+                                <span>23</span>
+                            </button>
+                            <button class="action-btn repost-btn" onclick="repost(1)">
+                                <i class="fas fa-retweet"></i>
+                                <span>12</span>
+                            </button>
+                            <button class="action-btn share-btn" onclick="sharePost(1)">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                        <div class="comments-section" id="comments-1" style="display: none;">
+                            <div class="comment">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Carlos" class="comment-avatar">
+                                <div class="comment-content">
+                                    <span class="comment-author">Carlos López</span>
+                                    <p>¡Increíble trabajo! ¿Cuándo podremos ver una demo?</p>
+                                    <div class="comment-actions">
+                                        <button class="comment-like"><i class="far fa-heart"></i> 5</button>
+                                        <button class="comment-reply">Responder</button>
+                                        <span class="comment-time">1h</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="post-content">La tecnología está cambiando tan rápido. Es emocionante ser parte de esta revolución digital.</div>
-                    <div class="post-actions">
-                        <span class="action">❤️ 18</span>
-                        <span class="action">💬 3</span>
-                        <span class="action">🔄 1</span>
+
+                    <div class="post" data-post-id="2">
+                        <div class="post-header">
+                            <div class="post-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Carlos López">
+                                <div class="online-indicator"></div>
+                            </div>
+                            <div class="post-user-info">
+                                <div class="post-name">Carlos López</div>
+                                <div class="post-meta">
+                                    <span class="username">@carlos_dev</span>
+                                    <span class="separator">•</span>
+                                    <span class="timestamp" data-time="2024-01-15T08:15:00Z">4h</span>
+                                </div>
+                            </div>
+                            <div class="post-options">
+                                <button class="options-btn" onclick="showPostOptions(2)">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>La tecnología está evolucionando a una velocidad increíble. Es emocionante ser parte de esta revolución digital y ver cómo cambia nuestro mundo cada día.</p>
+                        </div>
+                        <div class="post-stats">
+                            <span class="stat"><i class="fas fa-heart"></i> 189</span>
+                            <span class="stat"><i class="fas fa-comment"></i> 15</span>
+                            <span class="stat"><i class="fas fa-retweet"></i> 8</span>
+                            <span class="stat"><i class="fas fa-eye"></i> 892</span>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn like-btn" onclick="toggleLike(this, 2)">
+                                <i class="far fa-heart"></i>
+                                <span>189</span>
+                            </button>
+                            <button class="action-btn comment-btn" onclick="toggleComments(2)">
+                                <i class="far fa-comment"></i>
+                                <span>15</span>
+                            </button>
+                            <button class="action-btn repost-btn" onclick="repost(2)">
+                                <i class="fas fa-retweet"></i>
+                                <span>8</span>
+                            </button>
+                            <button class="action-btn share-btn" onclick="sharePost(2)">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                        <div class="comments-section" id="comments-2" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -169,12 +319,71 @@
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
-            <button class="nav-btn active" onclick="showScreen('home')">🏠</button>
-            <button class="nav-btn" onclick="showScreen('search')">🔍</button>
-            <button class="nav-btn" onclick="showScreen('post')">➕</button>
-            <button class="nav-btn" onclick="showScreen('activity')">🔔</button>
-            <button class="nav-btn" onclick="showScreen('profile')">👤</button>
+            <button class="nav-btn active" onclick="showScreen('home')" data-screen="home">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-btn" onclick="showScreen('search')" data-screen="search">
+                <i class="fas fa-search"></i>
+                <span>Buscar</span>
+            </button>
+            <button class="nav-btn create-btn" onclick="showScreen('post')" data-screen="post">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="nav-btn" onclick="showScreen('activity')" data-screen="activity">
+                <i class="fas fa-heart"></i>
+                <span>Actividad</span>
+                <div class="activity-badge">5</div>
+            </button>
+            <button class="nav-btn" onclick="showScreen('profile')" data-screen="profile">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </button>
         </nav>
+
+        <!-- Floating Action Button -->
+        <button class="fab" onclick="quickPost()">
+            <i class="fas fa-feather-alt"></i>
+        </button>
+
+        <!-- Real-time Notifications -->
+        <div class="notification-popup" id="notificationPopup">
+            <div class="notification-item">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" alt="María">
+                <div class="notification-content">
+                    <p><strong>María Silva</strong> le gustó tu publicación</p>
+                    <span class="notification-time">Hace 2 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Chat Widget -->
+        <div class="chat-widget" id="chatWidget">
+            <div class="chat-header" onclick="toggleChat()">
+                <i class="fas fa-comments"></i>
+                <span>Chat en vivo</span>
+                <div class="chat-badge">2</div>
+            </div>
+            <div class="chat-content" id="chatContent">
+                <div class="chat-message">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=30&h=30&fit=crop&crop=face" alt="Carlos">
+                    <div class="message-content">
+                        <span class="message-author">Carlos</span>
+                        <p>¡Hola! ¿Cómo estás?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+        </div>
+        <p>Cargando Threads...</p>
     </div>
 
     <script src="script.js"></script>
