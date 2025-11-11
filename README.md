@@ -1,71 +1,70 @@
-# Threads App - Aplicación Social Inspirada en Threads
+# Threads App - Aplicación Social Web
 
-Una aplicación móvil completa inspirada en Threads de Meta, desarrollada con React Native y Expo.
+Una aplicación web moderna inspirada en Threads, desarrollada con HTML, CSS y JavaScript puro.
 
 ## 🚀 Características
 
-- **Feed Principal**: Timeline con posts de usuarios
-- **Búsqueda Avanzada**: Buscar usuarios, hashtags con pestañas filtradas
+- **Feed Principal**: Timeline con posts interactivos
+- **Búsqueda Avanzada**: Buscar usuarios, hashtags con filtros en tiempo real
 - **Crear Posts**: Interfaz para publicar threads con contador de caracteres
 - **Actividad**: Notificaciones de likes, comentarios, seguidores
-- **Perfil de Usuario**: Perfil completo con estadísticas y posts
-- **Navegación por Pestañas**: Barra inferior con 5 secciones principales
+- **Perfil de Usuario**: Perfil completo con edición avanzada
+- **Navegación Fluida**: Transiciones suaves entre secciones
 
 ## 📱 Pantallas Incluidas
 
-1. **Home** - Feed principal con posts
-2. **Search** - Búsqueda con filtros (Todo, Usuarios, Hashtags)
-3. **Post** - Crear nuevos threads
-4. **Activity** - Notificaciones y actividad
-5. **Profile** - Perfil del usuario
+1. **Home** - Feed principal con posts animados
+2. **Search** - Búsqueda inteligente con resultados en tiempo real
+3. **Compose** - Crear nuevos threads con media
+4. **Activity** - Notificaciones organizadas por tipo
+5. **Profile** - Perfil editable con modal avanzado
 
 ## 🛠️ Tecnologías
 
-- React Native
-- Expo
-- React Navigation
-- Vector Icons
-- Linear Gradient
+- HTML5 semántico
+- CSS3 con variables y animaciones
+- JavaScript ES6+ vanilla
+- FontAwesome icons
+- Responsive design
 
-## 🚀 Instalación
+## 🌐 Demo en Vivo
 
-```bash
-# Instalar dependencias
-npm install
-
-# Iniciar la aplicación
-npm start
-
-# Para Android
-npm run android
-
-# Para iOS
-npm run ios
-```
+**URL:** [https://yahdaa.github.io/dubbing](https://yahdaa.github.io/dubbing)
 
 ## 📂 Estructura del Proyecto
 
 ```
-src/
-├── components/
-│   ├── Header.js
-│   └── PostCard.js
-└── screens/
-    ├── HomeScreen.js
-    ├── SearchScreen.js
-    ├── PostScreen.js
-    ├── ActivityScreen.js
-    └── ProfileScreen.js
+├── index.html          # Aplicación principal
+├── style.css          # Estilos Uber modernos
+├── script.js          # Funcionalidad JavaScript
+└── README.md          # Documentación
 ```
+
+## ✨ Funcionalidades Avanzadas
+
+- **Búsqueda en tiempo real** con filtros
+- **Editar perfil completo** con subida de fotos
+- **Animaciones fluidas** estilo Uber
+- **Notificaciones live** con contadores
+- **Responsive design** móvil y desktop
+- **Modo oscuro** automático
+- **Keyboard shortcuts** (Cmd+N)
+
+## 🎨 Diseño
+
+- Estilo **Uber** auténtico
+- Colores oficiales y tipografía
+- Animaciones suaves y profesionales
+- Layout perfecto en todos los dispositivos
 
 ## 🔮 Próximas Funcionalidades
 
 - Integración con AWS para base de datos
-- Publicación en tiempo real
+- Autenticación de usuarios
 - Chat directo entre usuarios
 - Notificaciones push
-- Modo oscuro
+- PWA (Progressive Web App)
 
 ## 📝 Notas
 
-Esta aplicación está lista para conectarse con servicios de AWS para funcionalidad completa de backend y base de datos en tiempo real.
+Esta aplicación está optimizada para GitHub Pages y lista para conectarse con servicios de AWS para funcionalidad completa de backend.
