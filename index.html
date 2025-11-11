@@ -6,7 +6,10 @@
     <title>Threads - Social Network</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
     <div class="app">
@@ -14,16 +17,16 @@
         <header class="header">
             <div class="header-left">
                 <div class="logo">
-                    <i class="fab fa-threads"></i>
+                    <i class="fas fa-at"></i>
                     <span>Threads</span>
                 </div>
             </div>
             <div class="header-right">
-                <button class="header-btn" onclick="toggleNotifications()">
+                <button class="header-btn" onclick="app.toggleNotifications()">
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge" id="notificationBadge">3</span>
                 </button>
-                <button class="header-btn" onclick="toggleMenu()">
+                <button class="header-btn" onclick="app.toggleMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -47,30 +50,27 @@
             <div class="screen active" id="home">
                 <!-- Stories Section -->
                 <div class="stories-section">
-                    <div class="story add-story" onclick="addStory()">
+                    <div class="story add-story" onclick="app.addStory()">
                         <div class="story-avatar">
                             <i class="fas fa-plus"></i>
                         </div>
-                        <span>Tu historia</span>
+                        <span>Agregar</span>
                     </div>
-                    <div class="story" onclick="viewStory('ana')">
+                    <div class="story" onclick="app.viewStory('ana')">
                         <div class="story-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Ana">
-                            <div class="story-ring"></div>
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=56&h=56&fit=crop&crop=face" alt="Ana">
                         </div>
                         <span>Ana</span>
                     </div>
-                    <div class="story" onclick="viewStory('carlos')">
+                    <div class="story" onclick="app.viewStory('carlos')">
                         <div class="story-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Carlos">
-                            <div class="story-ring"></div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=56&h=56&fit=crop&crop=face" alt="Carlos">
                         </div>
                         <span>Carlos</span>
                     </div>
-                    <div class="story" onclick="viewStory('maria')">
+                    <div class="story" onclick="app.viewStory('maria')">
                         <div class="story-avatar">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="María">
-                            <div class="story-ring"></div>
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=56&h=56&fit=crop&crop=face" alt="María">
                         </div>
                         <span>María</span>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="post" data-post-id="1">
                         <div class="post-header">
                             <div class="post-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Ana García">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Ana García">
                                 <div class="online-indicator"></div>
                             </div>
                             <div class="post-user-info">
@@ -89,48 +89,43 @@
                                 <div class="post-meta">
                                     <span class="username">@ana_garcia</span>
                                     <span class="separator">•</span>
-                                    <span class="timestamp" data-time="2024-01-15T10:30:00Z">2h</span>
-                                    <span class="separator">•</span>
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> Madrid, España</span>
+                                    <span class="timestamp">2h</span>
                                 </div>
                             </div>
                             <div class="post-options">
-                                <button class="options-btn" onclick="showPostOptions(1)">
+                                <button class="options-btn" onclick="app.showPostOptions(1)">
                                     <i class="fas fa-ellipsis-h"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="post-content">
-                            <p>Trabajando en un nuevo proyecto increíble con IA y machine learning. ¡No puedo esperar a compartirlo con ustedes! 🚀</p>
+                            <p>Trabajando en un nuevo proyecto increíble con IA y machine learning. ¡No puedo esperar a compartirlo con ustedes!</p>
                             <div class="post-media">
-                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop" alt="Proyecto" class="post-image">
+                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=350&h=200&fit=crop" alt="Proyecto" class="post-image">
                             </div>
                             <div class="post-tags">
                                 <span class="tag">#IA</span>
-                                <span class="tag">#MachineLearning</span>
                                 <span class="tag">#Tech</span>
                             </div>
                         </div>
                         <div class="post-stats">
-                            <span class="stat"><i class="fas fa-heart"></i> 247</span>
-                            <span class="stat"><i class="fas fa-comment"></i> 23</span>
-                            <span class="stat"><i class="fas fa-retweet"></i> 12</span>
-                            <span class="stat"><i class="fas fa-eye"></i> 1.2K</span>
+                            <span class="stat">247 me gusta</span>
+                            <span class="stat">23 comentarios</span>
                         </div>
                         <div class="post-actions">
-                            <button class="action-btn like-btn" onclick="toggleLike(this, 1)">
+                            <button class="action-btn like-btn" onclick="app.toggleLike(this, 1)">
                                 <i class="far fa-heart"></i>
                                 <span>247</span>
                             </button>
-                            <button class="action-btn comment-btn" onclick="toggleComments(1)">
+                            <button class="action-btn comment-btn" onclick="app.toggleComments(1)">
                                 <i class="far fa-comment"></i>
                                 <span>23</span>
                             </button>
-                            <button class="action-btn repost-btn" onclick="repost(1)">
+                            <button class="action-btn repost-btn" onclick="app.repost(1)">
                                 <i class="fas fa-retweet"></i>
                                 <span>12</span>
                             </button>
-                            <button class="action-btn share-btn" onclick="sharePost(1)">
+                            <button class="action-btn share-btn" onclick="app.sharePost(1)">
                                 <i class="fas fa-share"></i>
                             </button>
                         </div>
@@ -319,23 +314,23 @@
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
-            <button class="nav-btn active" onclick="showScreen('home')" data-screen="home">
+            <button class="nav-btn active" onclick="app.showScreen('home')" data-screen="home">
                 <i class="fas fa-home"></i>
                 <span>Inicio</span>
             </button>
-            <button class="nav-btn" onclick="showScreen('search')" data-screen="search">
+            <button class="nav-btn" onclick="app.showScreen('search')" data-screen="search">
                 <i class="fas fa-search"></i>
                 <span>Buscar</span>
             </button>
-            <button class="nav-btn create-btn" onclick="showScreen('post')" data-screen="post">
+            <button class="nav-btn create-btn" onclick="app.showScreen('post')" data-screen="post">
                 <i class="fas fa-plus"></i>
             </button>
-            <button class="nav-btn" onclick="showScreen('activity')" data-screen="activity">
+            <button class="nav-btn" onclick="app.showScreen('activity')" data-screen="activity">
                 <i class="fas fa-heart"></i>
                 <span>Actividad</span>
                 <div class="activity-badge">5</div>
             </button>
-            <button class="nav-btn" onclick="showScreen('profile')" data-screen="profile">
+            <button class="nav-btn" onclick="app.showScreen('profile')" data-screen="profile">
                 <i class="fas fa-user"></i>
                 <span>Perfil</span>
             </button>
