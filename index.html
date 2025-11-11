@@ -118,32 +118,50 @@
                 <div class="search-container">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Buscar en Threads" class="search-input">
+                        <input type="text" placeholder="Buscar en Threads" class="search-input" oninput="app.performSearch(this.value)">
                     </div>
                     <div class="search-filters">
-                        <button class="filter-btn active">Todo</button>
-                        <button class="filter-btn">Usuarios</button>
-                        <button class="filter-btn">Hashtags</button>
+                        <button class="filter-btn active" onclick="app.filterSearch('all')">Todo</button>
+                        <button class="filter-btn" onclick="app.filterSearch('users')">Usuarios</button>
+                        <button class="filter-btn" onclick="app.filterSearch('hashtags')">Hashtags</button>
+                        <button class="filter-btn" onclick="app.filterSearch('posts')">Posts</button>
                     </div>
-                    <div class="trending-section">
+                    
+                    <div class="search-results" id="searchResults" style="display: none;">
+                        <!-- Dynamic search results will appear here -->
+                    </div>
+                    
+                    <div class="trending-section" id="trendingSection">
                         <h3>Tendencias para ti</h3>
                         <div class="trending-list">
-                            <div class="trending-item">
+                            <div class="trending-item" onclick="app.searchTopic('#JavaScript')">
                                 <div class="trending-info">
                                     <span class="trending-topic">#JavaScript</span>
                                     <span class="trending-count">45.2K Threads</span>
                                 </div>
                             </div>
-                            <div class="trending-item">
+                            <div class="trending-item" onclick="app.searchTopic('#IA')">
                                 <div class="trending-info">
                                     <span class="trending-topic">#IA</span>
                                     <span class="trending-count">32.1K Threads</span>
                                 </div>
                             </div>
-                            <div class="trending-item">
+                            <div class="trending-item" onclick="app.searchTopic('#Startup')">
                                 <div class="trending-info">
                                     <span class="trending-topic">#Startup</span>
                                     <span class="trending-count">28.7K Threads</span>
+                                </div>
+                            </div>
+                            <div class="trending-item" onclick="app.searchTopic('#React')">
+                                <div class="trending-info">
+                                    <span class="trending-topic">#React</span>
+                                    <span class="trending-count">21.8K Threads</span>
+                                </div>
+                            </div>
+                            <div class="trending-item" onclick="app.searchTopic('#Python')">
+                                <div class="trending-info">
+                                    <span class="trending-topic">#Python</span>
+                                    <span class="trending-count">19.5K Threads</span>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +265,7 @@
                                         <span class="stat-label">Seguidores</span>
                                     </div>
                                 </div>
-                                <button class="edit-profile-btn">Editar perfil</button>
+                                <button class="edit-profile-btn" onclick="app.openEditProfile()">Editar perfil</button>
                             </div>
                         </div>
                     </div>
@@ -294,6 +312,58 @@
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-spinner"></div>
         <p>Cargando Threads...</p>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Editar perfil</h2>
+                <button class="modal-close" onclick="app.closeEditProfile()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="avatar-upload">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=60&h=60&fit=crop&crop=face" alt="Avatar" class="avatar-preview" id="avatarPreview">
+                    <div>
+                        <button class="upload-btn" onclick="app.uploadAvatar()">
+                            <i class="fas fa-camera"></i> Cambiar foto
+                        </button>
+                        <input type="file" id="avatarInput" accept="image/*" style="display: none;" onchange="app.previewAvatar(this)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-input" id="editName" value="Tu nombre" maxlength="50">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-input" id="editUsername" value="tu_usuario" maxlength="15">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Biografía</label>
+                    <textarea class="form-input form-textarea" id="editBio" maxlength="160" placeholder="Cuéntanos sobre ti...">Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Ubicación</label>
+                    <input type="text" class="form-input" id="editLocation" value="Madrid, España" maxlength="30">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Sitio web</label>
+                    <input type="url" class="form-input" id="editWebsite" value="https://portfolio.dev" placeholder="https://">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="app.closeEditProfile()">Cancelar</button>
+                <button class="btn-primary" onclick="app.saveProfile()">Guardar cambios</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
