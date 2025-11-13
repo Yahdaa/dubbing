@@ -474,17 +474,38 @@ class UberThreadsApp {
         this.showToast('Función de respuesta próximamente');
     }
 
-    retweetPost(postId) {
-        const retweetBtns = document.querySelectorAll(`[data-post="${postId}"] .retweet-btn`);
-        retweetBtns.forEach(btn => {
-            btn.style.color = 'var(--uber-green)';
-            btn.style.transform = 'rotate(180deg)';
+    repostPost(postId, button) {
+        const icon = button.querySelector('i');
+        const count = button.querySelector('span');
+        const currentCount = parseInt(count.textContent) || 0;
+        
+        if (button.classList.contains('reposted')) {
+            button.classList.remove('reposted');
+            count.textContent = Math.max(0, currentCount - 1);
+            this.showToast('Repost eliminado');
+        } else {
+            button.classList.add('reposted');
+            count.textContent = currentCount + 1;
+            button.style.transform = 'rotate(180deg)';
             setTimeout(() => {
-                btn.style.transform = 'rotate(0deg)';
-                btn.style.color = '';
+                button.style.transform = 'rotate(0deg)';
             }, 300);
-        });
-        this.showToast('Thread reposteado');
+            this.showToast('Post reposteado');
+        }
+    }
+
+    bookmarkPost(postId, button) {
+        const icon = button.querySelector('i');
+        
+        if (icon.classList.contains('fas')) {
+            icon.classList.remove('fas');
+            icon.classList.add('far');
+            this.showToast('Guardado eliminado');
+        } else {
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+            this.showToast('Post guardado');
+        }
     }
 
     sharePost(postId) {
@@ -749,13 +770,35 @@ class UberThreadsApp {
 
     filterHome(type) {
         const tabs = document.querySelectorAll('.home-tab');
+        const feedContainer = document.getElementById('feedContainer');
+        
         tabs.forEach(tab => tab.classList.remove('active'));
         event.target.classList.add('active');
         
         if (type === 'foryou') {
-            this.showToast('Mostrando For You');
+            feedContainer.style.opacity = '0';
+            setTimeout(() => {
+                // Mostrar todos los posts
+                document.querySelectorAll('.post-item').forEach(post => {
+                    post.style.display = 'flex';
+                });
+                feedContainer.style.opacity = '1';
+            }, 150);
         } else {
-            this.showToast('Mostrando Following');
+            feedContainer.style.opacity = '0';
+            setTimeout(() => {
+                // Mostrar solo posts de personas que sigues
+                const followingUsers = ['ana_garcia', 'carlos_dev'];
+                document.querySelectorAll('.post-item').forEach(post => {
+                    const username = post.querySelector('.post-username')?.textContent.replace('@', '');
+                    if (followingUsers.includes(username)) {
+                        post.style.display = 'flex';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+                feedContainer.style.opacity = '1';
+            }, 150);
         }
     }
 

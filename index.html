@@ -22,7 +22,11 @@
         <main class="main-content">
             <!-- Home Screen -->
             <div class="screen active" id="home">
-                <div class="feed-container">
+                <div class="home-tabs">
+                    <button class="home-tab active" onclick="app.filterHome('foryou')">For You</button>
+                    <button class="home-tab" onclick="app.filterHome('following')">Following</button>
+                </div>
+                <div class="feed-container" id="feedContainer">
                     <div class="post-item" data-post="1">
                         <div class="post-avatar">
                             <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Ana">
@@ -44,13 +48,16 @@
                                     <i class="far fa-comment"></i>
                                     <span>12</span>
                                 </button>
-                                <button class="action-btn retweet-btn" onclick="app.retweetPost(1)">
+                                <button class="action-btn repost-btn" onclick="app.repostPost(1, this)">
                                     <i class="fas fa-retweet"></i>
                                     <span>5</span>
                                 </button>
                                 <button class="action-btn like-btn" onclick="app.likePost(1, this)">
                                     <i class="far fa-heart"></i>
                                     <span>89</span>
+                                </button>
+                                <button class="action-btn bookmark-btn" onclick="app.bookmarkPost(1, this)">
+                                    <i class="far fa-bookmark"></i>
                                 </button>
                                 <button class="action-btn share-btn" onclick="app.sharePost(1)">
                                     <i class="fas fa-share"></i>
@@ -83,13 +90,16 @@
                                     <i class="far fa-comment"></i>
                                     <span>24</span>
                                 </button>
-                                <button class="action-btn retweet-btn" onclick="app.retweetPost(2)">
+                                <button class="action-btn repost-btn" onclick="app.repostPost(2, this)">
                                     <i class="fas fa-retweet"></i>
                                     <span>8</span>
                                 </button>
                                 <button class="action-btn like-btn" onclick="app.likePost(2, this)">
                                     <i class="far fa-heart"></i>
                                     <span>156</span>
+                                </button>
+                                <button class="action-btn bookmark-btn" onclick="app.bookmarkPost(2, this)">
+                                    <i class="far fa-bookmark"></i>
                                 </button>
                                 <button class="action-btn share-btn" onclick="app.sharePost(2)">
                                     <i class="fas fa-share"></i>
@@ -103,9 +113,11 @@
             <!-- Search Screen -->
             <div class="screen" id="search">
                 <div class="search-container">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Buscar en Threads" class="search-input" oninput="app.performSearch(this.value)">
+                    <div class="search-header">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar juegos, gamers, clips..." class="search-input" oninput="app.performSearch(this.value)">
+                        </div>
                     </div>
                     <div class="search-filters">
                         <button class="filter-btn active" onclick="app.filterSearch('all')">Todo</button>

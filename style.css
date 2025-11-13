@@ -307,9 +307,35 @@ body {
     background: rgba(33, 150, 243, 0.1);
 }
 
-.retweet-btn:hover {
+.repost-btn:hover {
     color: var(--uber-green);
     background: rgba(0, 200, 83, 0.1);
+}
+
+.repost-btn.reposted {
+    color: var(--uber-green);
+}
+
+.bookmark-btn:hover {
+    color: var(--uber-blue);
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.bookmark-btn i.fas {
+    color: var(--uber-blue);
+}
+
+.feed-container {
+    transition: opacity 0.3s ease;
+}
+
+.search-header {
+    position: sticky;
+    top: 0;
+    background: var(--uber-white);
+    z-index: 10;
+    padding: 16px;
+    padding-bottom: 0;
 }
 
 .like-btn:hover {
