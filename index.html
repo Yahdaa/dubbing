@@ -12,24 +12,11 @@
 </head>
 <body>
     <div class="app">
-        <!-- Header -->
-        <header class="header" id="mainHeader">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-gamepad"></i>
-                    <span>GameHub</span>
-                </div>
-                <div class="header-actions">
-                    <button class="header-btn" onclick="app.toggleSearch()">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="header-btn notification-btn" onclick="app.toggleNotifications()">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-dot"></span>
-                    </button>
-                </div>
-            </div>
-        </header>
+        <!-- Notification Button -->
+        <button class="notification-float" onclick="app.toggleNotifications()">
+            <i class="fas fa-bell"></i>
+            <span class="notification-dot"></span>
+        </button>
 
         <!-- Main Content -->
         <main class="main-content">

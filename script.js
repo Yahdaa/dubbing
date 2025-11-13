@@ -171,7 +171,6 @@ class UberThreadsApp {
     showScreen(screenName) {
         const currentScreen = document.querySelector('.screen.active');
         const targetScreen = document.getElementById(screenName);
-        const header = document.getElementById('mainHeader');
 
         if (currentScreen) {
             currentScreen.style.opacity = '0';
@@ -192,13 +191,6 @@ class UberThreadsApp {
             targetScreen.classList.add('active');
             targetScreen.style.opacity = '1';
             targetScreen.style.transform = 'translateY(0)';
-        }
-
-        // Show header only on home screen
-        if (screenName === 'home') {
-            header.style.display = 'block';
-        } else {
-            header.style.display = 'none';
         }
 
         // Play video in reels
@@ -743,6 +735,18 @@ class UberThreadsApp {
 
     addVideo() {
         this.showToast('Función de video próximamente');
+    }
+
+    filterHome(type) {
+        const tabs = document.querySelectorAll('.home-tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        if (type === 'foryou') {
+            this.showToast('Mostrando For You');
+        } else {
+            this.showToast('Mostrando Following');
+        }
     }
 
     likeReel(id) {
