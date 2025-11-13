@@ -338,7 +338,12 @@
                                         <span class="stat-label">Seguidores</span>
                                     </div>
                                 </div>
-                                <button class="edit-profile-btn" onclick="app.showScreen('editProfile')">Editar perfil</button>
+                                <div class="profile-actions">
+                                    <button class="edit-profile-btn" onclick="app.showScreen('editProfile')">Editar perfil</button>
+                                    <button class="settings-btn" onclick="app.showScreen('settings')">
+                                        <i class="fas fa-cog"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -411,6 +416,70 @@
                                 <span class="user-item-username">@diego_startup</span>
                             </div>
                             <button class="follow-btn following">Siguiendo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Screen -->
+            <div class="screen" id="settings">
+                <div class="settings-container">
+                    <div class="settings-header">
+                        <button class="back-btn" onclick="app.showScreen('profile')">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h2 class="settings-title">Ajustes</h2>
+                    </div>
+                    <div class="settings-list">
+                        <div class="settings-section">
+                            <h3 class="settings-section-title">Cuenta</h3>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Información de la cuenta</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-lock"></i>
+                                <span>Privacidad</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Seguridad</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h3 class="settings-section-title">Preferencias</h3>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-bell"></i>
+                                <span>Notificaciones</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-palette"></i>
+                                <span>Apariencia</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h3 class="settings-section-title">Legal</h3>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-file-contract"></i>
+                                <span>Términos de servicio</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item" onclick="app.showToast('Próximamente')">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Política de privacidad</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <div class="settings-item danger" onclick="app.showToast('Cerrar sesión')">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Cerrar sesión</span>
+                            </div>
                         </div>
                     </div>
                 </div>

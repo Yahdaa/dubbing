@@ -193,6 +193,14 @@ class UberThreadsApp {
             targetScreen.style.transform = 'translateY(0)';
         }
 
+        // Show/hide notification button
+        const notifBtn = document.querySelector('.notification-float');
+        if (screenName === 'home') {
+            notifBtn.style.display = 'flex';
+        } else {
+            notifBtn.style.display = 'none';
+        }
+
         // Handle reels
         if (screenName === 'reels') {
             setTimeout(() => this.initReels(), 100);

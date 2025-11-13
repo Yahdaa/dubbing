@@ -823,6 +823,12 @@ body {
     font-size: 15px;
 }
 
+.profile-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 .edit-profile-btn {
     border: 1px solid var(--uber-gray-300);
     background: var(--uber-white);
@@ -833,11 +839,31 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
+    flex: 1;
 }
 
 .edit-profile-btn:hover {
     background: var(--uber-gray-100);
     transform: translateY(-1px);
+}
+
+.settings-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--uber-gray-300);
+    background: var(--uber-white);
+    color: var(--uber-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.settings-btn:hover {
+    background: var(--uber-gray-100);
+    transform: scale(1.05);
 }
 
 .profile-tabs {
@@ -990,6 +1016,86 @@ body {
 .follow-btn.following:hover {
     background: var(--uber-gray-100);
     border-color: var(--uber-red);
+    color: var(--uber-red);
+}
+
+/* Settings Screen */
+.settings-container {
+    height: 100%;
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-bottom: 1px solid var(--uber-gray-200);
+    background: var(--uber-white);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.settings-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--uber-black);
+}
+
+.settings-list {
+    padding-bottom: 80px;
+}
+
+.settings-section {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--uber-gray-200);
+}
+
+.settings-section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--uber-gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 16px 8px;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.settings-item:hover {
+    background: var(--uber-gray-50);
+}
+
+.settings-item i:first-child {
+    font-size: 20px;
+    color: var(--uber-gray-700);
+    width: 24px;
+}
+
+.settings-item span {
+    flex: 1;
+    font-size: 15px;
+    color: var(--uber-black);
+}
+
+.settings-item i:last-child {
+    font-size: 14px;
+    color: var(--uber-gray-500);
+}
+
+.settings-item.danger {
+    color: var(--uber-red);
+}
+
+.settings-item.danger i,
+.settings-item.danger span {
     color: var(--uber-red);
 }
 
