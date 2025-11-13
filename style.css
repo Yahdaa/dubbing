@@ -55,8 +55,10 @@ body {
 
 /* Header */
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     background: var(--uber-white);
     border-bottom: 1px solid var(--uber-gray-200);
@@ -142,6 +144,8 @@ body {
     margin: 0 auto;
     width: 100%;
     background: var(--uber-white);
+    margin-top: 60px;
+    margin-bottom: 70px;
 }
 
 .screen {
@@ -888,7 +892,7 @@ body {
     background: var(--uber-white);
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
 }
 
 .back-btn {
@@ -1085,8 +1089,10 @@ body {
     padding: 8px 0;
     background: var(--uber-white);
     border-top: 1px solid var(--uber-gray-200);
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     box-shadow: var(--shadow-1);
 }
