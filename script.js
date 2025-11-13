@@ -598,6 +598,23 @@ class UberThreadsApp {
         return postEl;
     }
 
+    // Profile Tab Filter
+    filterProfileTab(type) {
+        const tabs = document.querySelectorAll('.profile-tab');
+        const content = document.getElementById('profileContent');
+        
+        tabs.forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        if (type === 'threads') {
+            content.innerHTML = '<div class="empty-state"><i class="fas fa-comment-dots"></i><p>Aún no hay threads</p></div>';
+        } else if (type === 'replies') {
+            content.innerHTML = '<div class="empty-state"><i class="fas fa-reply"></i><p>Aún no hay respuestas</p></div>';
+        } else if (type === 'likes') {
+            content.innerHTML = '<div class="empty-state"><i class="fas fa-heart"></i><p>Aún no hay me gusta</p></div>';
+        }
+    }
+
     // Activity Filter
     filterActivity(type) {
         const items = document.querySelectorAll('.activity-item');

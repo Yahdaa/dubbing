@@ -280,11 +280,11 @@
                                 <span class="profile-username">@tu_usuario</span>
                                 <p class="profile-bio">Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.</p>
                                 <div class="profile-stats">
-                                    <div class="stat">
+                                    <div class="stat" onclick="app.showScreen('following')">
                                         <span class="stat-number">1,247</span>
                                         <span class="stat-label">Siguiendo</span>
                                     </div>
-                                    <div class="stat">
+                                    <div class="stat" onclick="app.showScreen('followers')">
                                         <span class="stat-number">15.2K</span>
                                         <span class="stat-label">Seguidores</span>
                                     </div>
@@ -294,9 +294,75 @@
                         </div>
                     </div>
                     <div class="profile-tabs">
-                        <button class="profile-tab active">Threads</button>
-                        <button class="profile-tab">Respuestas</button>
-                        <button class="profile-tab">Me gusta</button>
+                        <button class="profile-tab active" onclick="app.filterProfileTab('threads')">Threads</button>
+                        <button class="profile-tab" onclick="app.filterProfileTab('replies')">Respuestas</button>
+                        <button class="profile-tab" onclick="app.filterProfileTab('likes')">Me gusta</button>
+                    </div>
+                    <div class="profile-content" id="profileContent">
+                        <div class="empty-state">
+                            <i class="fas fa-comment-dots"></i>
+                            <p>Aún no hay threads</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Following Screen -->
+            <div class="screen" id="following">
+                <div class="list-container">
+                    <div class="list-header">
+                        <button class="back-btn" onclick="app.showScreen('profile')">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h2 class="list-title">Siguiendo</h2>
+                    </div>
+                    <div class="user-list">
+                        <div class="user-item">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Ana" class="user-item-avatar">
+                            <div class="user-item-info">
+                                <span class="user-item-name">Ana García</span>
+                                <span class="user-item-username">@ana_garcia</span>
+                            </div>
+                            <button class="follow-btn following">Siguiendo</button>
+                        </div>
+                        <div class="user-item">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Carlos" class="user-item-avatar">
+                            <div class="user-item-info">
+                                <span class="user-item-name">Carlos López</span>
+                                <span class="user-item-username">@carlos_dev</span>
+                            </div>
+                            <button class="follow-btn following">Siguiendo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Followers Screen -->
+            <div class="screen" id="followers">
+                <div class="list-container">
+                    <div class="list-header">
+                        <button class="back-btn" onclick="app.showScreen('profile')">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h2 class="list-title">Seguidores</h2>
+                    </div>
+                    <div class="user-list">
+                        <div class="user-item">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" alt="María" class="user-item-avatar">
+                            <div class="user-item-info">
+                                <span class="user-item-name">María Silva</span>
+                                <span class="user-item-username">@maria_design</span>
+                            </div>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <div class="user-item">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Diego" class="user-item-avatar">
+                            <div class="user-item-info">
+                                <span class="user-item-name">Diego Ruiz</span>
+                                <span class="user-item-username">@diego_startup</span>
+                            </div>
+                            <button class="follow-btn following">Siguiendo</button>
+                        </div>
                     </div>
                 </div>
             </div>
