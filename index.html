@@ -314,10 +314,11 @@
                     
                     <div class="edit-profile-content">
                         <div class="edit-cover">
-                            <div class="edit-cover-bg"></div>
-                            <button class="change-cover-btn" onclick="app.changeCover()">
+                            <div class="edit-cover-bg" id="coverPreview"></div>
+                            <button class="change-cover-btn" onclick="app.uploadCover()">
                                 <i class="fas fa-camera"></i>
                             </button>
+                            <input type="file" id="coverInput" accept="image/*" style="display: none;" onchange="app.previewCover(this)">
                         </div>
                         
                         <div class="edit-avatar-section">

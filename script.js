@@ -628,6 +628,25 @@ class UberThreadsApp {
             const reader = new FileReader();
             reader.onload = (e) => {
                 document.getElementById('avatarPreview').src = e.target.result;
+                this.currentUser.avatar = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    uploadCover() {
+        document.getElementById('coverInput').click();
+    }
+
+    previewCover(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const coverBg = document.getElementById('coverPreview');
+                coverBg.style.backgroundImage = `url(${e.target.result})`;
+                coverBg.style.backgroundSize = 'cover';
+                coverBg.style.backgroundPosition = 'center';
+                this.currentUser.cover = e.target.result;
             };
             reader.readAsDataURL(input.files[0]);
         }
@@ -690,10 +709,6 @@ class UberThreadsApp {
 
     addLocation() {
         this.showToast('Función de ubicación próximamente');
-    }
-
-    changeCover() {
-        this.showToast('Función de portada próximamente');
     }
 
     toggleSearch() {
