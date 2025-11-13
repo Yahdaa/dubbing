@@ -949,7 +949,7 @@ body {
 }
 
 .edit-cover {
-    height: 150px;
+    height: 120px;
     position: relative;
     background: var(--uber-gray-100);
 }
@@ -985,8 +985,8 @@ body {
 
 .edit-avatar-section {
     padding: 0 16px;
-    margin-top: -40px;
-    margin-bottom: 20px;
+    margin-top: -30px;
+    margin-bottom: 16px;
 }
 
 .edit-avatar-wrapper {

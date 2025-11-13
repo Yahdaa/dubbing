@@ -300,7 +300,6 @@
                     </div>
                 </div>
             </div>
-        </main>
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
@@ -330,12 +329,6 @@
         <button class="fab" onclick="app.showScreen('compose')">
             <i class="fas fa-feather-alt"></i>
         </button>
-    </div>
-
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-spinner"></div>
-        <p>Cargando Threads...</p>
     </div>
 
             <!-- Edit Profile Screen -->
@@ -398,6 +391,42 @@
                 </div>
             </div>
         </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="app.showScreen('home')" data-screen="home">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-item" onclick="app.showScreen('search')" data-screen="search">
+                <i class="fas fa-search"></i>
+                <span>Buscar</span>
+            </button>
+            <button class="nav-item compose-nav" onclick="app.showScreen('compose')" data-screen="compose">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="nav-item" onclick="app.showScreen('activity')" data-screen="activity">
+                <i class="fas fa-heart"></i>
+                <span>Actividad</span>
+                <span class="activity-badge">3</span>
+            </button>
+            <button class="nav-item" onclick="app.showScreen('profile')" data-screen="profile">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </button>
+        </nav>
+
+        <!-- Floating Compose Button (Mobile) -->
+        <button class="fab" onclick="app.showScreen('compose')">
+            <i class="fas fa-feather-alt"></i>
+        </button>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+                <div class="loading-spinner"></div>
+        <p>Cargando Threads...</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
