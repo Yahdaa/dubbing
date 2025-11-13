@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threads</title>
+    <title>GameHub - Red Social de Gaming</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <meta name="theme-color" content="#000000">
@@ -16,8 +16,8 @@
         <header class="header" id="mainHeader">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-at"></i>
-                    <span>threads</span>
+                    <i class="fas fa-gamepad"></i>
+                    <span>GameHub</span>
                 </div>
                 <div class="header-actions">
                     <button class="header-btn" onclick="app.toggleSearch()">
@@ -50,7 +50,7 @@
                                 </button>
                             </div>
                             <div class="post-text">
-                                Trabajando en un nuevo proyecto de IA. La tecnología está evolucionando tan rápido que es emocionante ser parte de esta revolución.
+                                Acabo de terminar Elden Ring después de 120 horas! Qué juegazo, definitivamente uno de los mejores RPG que he jugado 🎮🔥
                             </div>
                             <div class="post-actions">
                                 <button class="action-btn reply-btn" onclick="app.replyPost(1)">
@@ -86,7 +86,7 @@
                                 </button>
                             </div>
                             <div class="post-text">
-                                JavaScript sigue siendo el lenguaje más versátil. Desde frontend hasta backend, mobile y desktop. ¿Cuál es tu stack favorito?
+                                ¿Alguien más esperando el nuevo Zelda? Los trailers se ven increíbles! Nintendo siempre sorprendiendo 🎮✨
                             </div>
                             <div class="post-image">
                                 <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=500&h=300&fit=crop" alt="Code">
@@ -136,32 +136,32 @@
                         <div class="trending-list">
                             <div class="trending-item" onclick="app.searchTopic('#JavaScript')">
                                 <div class="trending-info">
-                                    <span class="trending-topic">#JavaScript</span>
-                                    <span class="trending-count">45.2K Threads</span>
+                                    <span class="trending-topic">#EldenRing</span>
+                                    <span class="trending-count">45.2K Posts</span>
                                 </div>
                             </div>
                             <div class="trending-item" onclick="app.searchTopic('#IA')">
                                 <div class="trending-info">
-                                    <span class="trending-topic">#IA</span>
-                                    <span class="trending-count">32.1K Threads</span>
+                                    <span class="trending-topic">#PlayStation5</span>
+                                    <span class="trending-count">32.1K Posts</span>
                                 </div>
                             </div>
                             <div class="trending-item" onclick="app.searchTopic('#Startup')">
                                 <div class="trending-info">
-                                    <span class="trending-topic">#Startup</span>
-                                    <span class="trending-count">28.7K Threads</span>
+                                    <span class="trending-topic">#Nintendo</span>
+                                    <span class="trending-count">28.7K Posts</span>
                                 </div>
                             </div>
                             <div class="trending-item" onclick="app.searchTopic('#React')">
                                 <div class="trending-info">
-                                    <span class="trending-topic">#React</span>
-                                    <span class="trending-count">21.8K Threads</span>
+                                    <span class="trending-topic">#XboxGamePass</span>
+                                    <span class="trending-count">21.8K Posts</span>
                                 </div>
                             </div>
                             <div class="trending-item" onclick="app.searchTopic('#Python')">
                                 <div class="trending-info">
-                                    <span class="trending-topic">#Python</span>
-                                    <span class="trending-count">19.5K Threads</span>
+                                    <span class="trending-topic">#GodOfWar</span>
+                                    <span class="trending-count">19.5K Posts</span>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +196,7 @@
                                     <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="Ana">
                                     <span>@ana_garcia</span>
                                 </div>
-                                <p class="reel-caption">Nuevo proyecto increíble 🚀</p>
+                                <p class="reel-caption">Gameplay épico de Elden Ring! 🎮🔥</p>
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                                 <span class="user-handle">@tu_usuario</span>
                             </div>
                         </div>
-                        <textarea class="compose-textarea" placeholder="¿Qué está pasando?" maxlength="280" oninput="app.updateCounter(this)"></textarea>
+                        <textarea class="compose-textarea" placeholder="¿Qué estás jugando?" maxlength="280" oninput="app.updateCounter(this)"></textarea>
                         <div class="compose-footer">
                             <div class="compose-actions">
                                 <button class="compose-action" onclick="app.addImage()">
@@ -312,7 +312,7 @@
                             <div class="profile-details">
                                 <h2 class="profile-name">Tu nombre</h2>
                                 <span class="profile-username">@tu_usuario</span>
-                                <p class="profile-bio">Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.</p>
+                                <p class="profile-bio">Gamer apasionado 🎮 | RPG & Shooters | Streamer ocasional | PlayStation & PC Master Race</p>
                                 <div class="profile-stats">
                                     <div class="stat" onclick="app.showScreen('following')">
                                         <span class="stat-number">1,247</span>
@@ -444,7 +444,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label">Biografía</label>
-                                <textarea class="form-input form-textarea" id="editBio" maxlength="160" placeholder="Cuéntanos sobre ti...">Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.</textarea>
+                                <textarea class="form-input form-textarea" id="editBio" maxlength="160" placeholder="Cuéntanos sobre ti...">Gamer apasionado 🎮 | RPG & Shooters | Streamer ocasional | PlayStation & PC Master Race</textarea>
                                 <span class="char-count" id="bioCharCount">160</span>
                             </div>
                             

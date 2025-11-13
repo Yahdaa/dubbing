@@ -5,7 +5,7 @@ class UberThreadsApp {
             id: 1,
             name: 'Tu nombre',
             username: 'tu_usuario',
-            bio: 'Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.',
+            bio: 'Gamer apasionado 🎮 | RPG & Shooters | Streamer ocasional | PlayStation & PC Master Race',
             location: 'Madrid, España',
             website: 'https://portfolio.dev',
             avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=60&h=60&fit=crop&crop=face'
@@ -117,7 +117,7 @@ class UberThreadsApp {
                     username: 'ana_garcia',
                     avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'
                 },
-                content: 'Trabajando en un nuevo proyecto de IA. La tecnología está evolucionando tan rápido que es emocionante ser parte de esta revolución.',
+                content: 'Acabo de terminar Elden Ring después de 120 horas! Qué juegazo, definitivamente uno de los mejores RPG que he jugado 🎮🔥',
                 timestamp: '2h',
                 likes: 89,
                 replies: 12,
@@ -131,7 +131,7 @@ class UberThreadsApp {
                     username: 'carlos_dev',
                     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face'
                 },
-                content: 'JavaScript sigue siendo el lenguaje más versátil. Desde frontend hasta backend, mobile y desktop. ¿Cuál es tu stack favorito?',
+                content: '¿Alguien más esperando el nuevo Zelda? Los trailers se ven increíbles! Nintendo siempre sorprendiendo 🎮✨',
                 timestamp: '4h',
                 likes: 156,
                 replies: 24,
@@ -157,12 +157,12 @@ class UberThreadsApp {
             },
             {
                 type: 'hashtag',
-                tag: '#JavaScript',
+                tag: '#EldenRing',
                 posts: '45.2K'
             },
             {
                 type: 'hashtag',
-                tag: '#IA',
+                tag: '#PlayStation5',
                 posts: '32.1K'
             }
         ];
