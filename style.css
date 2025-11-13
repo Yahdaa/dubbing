@@ -141,7 +141,7 @@ body {
 
 .screen {
     display: none;
-    min-height: calc(100vh - 60px - 70px);
+    min-height: calc(100vh - 70px);
     opacity: 0;
     transform: translateY(20px);
     transition: var(--transition);
@@ -151,6 +151,12 @@ body {
     display: block;
     opacity: 1;
     transform: translateY(0);
+}
+
+#reels {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
 /* Feed */
@@ -1570,11 +1576,15 @@ body {
 
 /* Reels Screen */
 .reels-container {
-    position: relative;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 70px;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
+    background: var(--uber-black);
 }
 
 .reel-item {
