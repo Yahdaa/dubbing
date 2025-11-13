@@ -169,9 +169,9 @@ class UberThreadsApp {
     }
 
     showScreen(screenName) {
-        // Smooth transition between screens
         const currentScreen = document.querySelector('.screen.active');
         const targetScreen = document.getElementById(screenName);
+        const header = document.getElementById('mainHeader');
 
         if (currentScreen) {
             currentScreen.style.opacity = '0';
@@ -194,7 +194,22 @@ class UberThreadsApp {
             targetScreen.style.transform = 'translateY(0)';
         }
 
-        // Update navigation
+        // Show/hide header based on screen
+        const hideHeaderScreens = ['reels', 'editProfile', 'following', 'followers'];
+        if (hideHeaderScreens.includes(screenName)) {
+            header.style.display = 'none';
+        } else {
+            header.style.display = 'block';
+        }
+
+        // Play video in reels
+        if (screenName === 'reels') {
+            const video = document.querySelector('.reel-video');
+            if (video) video.play();
+        } else {
+            document.querySelectorAll('.reel-video').forEach(v => v.pause());
+        }
+
         document.querySelectorAll('.nav-item').forEach(item => {
             item.classList.remove('active');
         });
@@ -204,7 +219,6 @@ class UberThreadsApp {
             activeNav.classList.add('active');
         }
 
-        // Scroll to top
         const mainContent = document.querySelector('.main-content');
         if (mainContent) {
             mainContent.scrollTop = 0;
@@ -726,6 +740,22 @@ class UberThreadsApp {
 
     addLocation() {
         this.showToast('Función de ubicación próximamente');
+    }
+
+    addVideo() {
+        this.showToast('Función de video próximamente');
+    }
+
+    likeReel(id) {
+        this.showToast('Reel liked');
+    }
+
+    commentReel(id) {
+        this.showToast('Comentarios próximamente');
+    }
+
+    shareReel(id) {
+        this.showToast('Compartir reel');
     }
 
     toggleSearch() {
