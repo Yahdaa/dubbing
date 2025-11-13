@@ -194,12 +194,11 @@ class UberThreadsApp {
             targetScreen.style.transform = 'translateY(0)';
         }
 
-        // Show/hide header based on screen
-        const hideHeaderScreens = ['reels', 'editProfile', 'following', 'followers'];
-        if (hideHeaderScreens.includes(screenName)) {
-            header.style.display = 'none';
-        } else {
+        // Show header only on home screen
+        if (screenName === 'home') {
             header.style.display = 'block';
+        } else {
+            header.style.display = 'none';
         }
 
         // Play video in reels
