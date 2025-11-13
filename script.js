@@ -56,16 +56,22 @@ class UberThreadsApp {
                 this.showScreen('compose');
             }
             if (e.key === 'Escape') {
-                this.closeEditProfile();
+                const currentScreen = document.querySelector('.screen.active');
+                if (currentScreen && currentScreen.id === 'editProfile') {
+                    this.showScreen('profile');
+                }
             }
         });
 
-        // Handle clicks outside modal
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay')) {
-                this.closeEditProfile();
-            }
-        });
+        // Bio character counter
+        const bioInput = document.getElementById('editBio');
+        if (bioInput) {
+            bioInput.addEventListener('input', (e) => {
+                const remaining = 160 - e.target.value.length;
+                const counter = document.getElementById('bioCharCount');
+                if (counter) counter.textContent = remaining;
+            });
+        }
     }
 
     setupAnimations() {
@@ -592,23 +598,25 @@ class UberThreadsApp {
         return postEl;
     }
 
-    // Profile Edit Functions
-    openEditProfile() {
-        const modal = document.getElementById('editProfileModal');
-        modal.classList.add('active');
+    // Activity Filter
+    filterActivity(type) {
+        const items = document.querySelectorAll('.activity-item');
+        const tabs = document.querySelectorAll('.activity-tab');
         
-        // Populate form with current data
-        document.getElementById('editName').value = this.currentUser.name;
-        document.getElementById('editUsername').value = this.currentUser.username;
-        document.getElementById('editBio').value = this.currentUser.bio;
-        document.getElementById('editLocation').value = this.currentUser.location;
-        document.getElementById('editWebsite').value = this.currentUser.website;
-        document.getElementById('avatarPreview').src = this.currentUser.avatar;
-    }
-
-    closeEditProfile() {
-        const modal = document.getElementById('editProfileModal');
-        modal.classList.remove('active');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        items.forEach(item => {
+            if (type === 'all') {
+                item.style.display = 'flex';
+            } else if (type === 'mentions' && item.dataset.type === 'mention') {
+                item.style.display = 'flex';
+            } else if (type === 'likes' && item.dataset.type === 'like') {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
     }
 
     uploadAvatar() {
@@ -626,7 +634,6 @@ class UberThreadsApp {
     }
 
     saveProfile() {
-        // Get form data
         const newData = {
             name: document.getElementById('editName').value,
             username: document.getElementById('editUsername').value,
@@ -636,7 +643,6 @@ class UberThreadsApp {
             avatar: document.getElementById('avatarPreview').src
         };
         
-        // Validate data
         if (!newData.name.trim()) {
             this.showToast('El nombre es requerido');
             return;
@@ -647,16 +653,9 @@ class UberThreadsApp {
             return;
         }
         
-        // Update user data
         Object.assign(this.currentUser, newData);
-        
-        // Update UI
         this.updateProfileUI();
-        
-        // Close modal
-        this.closeEditProfile();
-        
-        // Show success
+        this.showScreen('profile');
         this.showToast('Perfil actualizado exitosamente');
     }
 
@@ -671,6 +670,13 @@ class UberThreadsApp {
         document.querySelector('.user-name').textContent = this.currentUser.name;
         document.querySelector('.user-handle').textContent = `@${this.currentUser.username}`;
         document.querySelector('.user-avatar').src = this.currentUser.avatar;
+        
+        // Update edit profile form
+        document.getElementById('editName').value = this.currentUser.name;
+        document.getElementById('editUsername').value = this.currentUser.username;
+        document.getElementById('editBio').value = this.currentUser.bio;
+        document.getElementById('editLocation').value = this.currentUser.location;
+        document.getElementById('editWebsite').value = this.currentUser.website;
     }
 
     // Utility Functions
@@ -684,6 +690,10 @@ class UberThreadsApp {
 
     addLocation() {
         this.showToast('Función de ubicación próximamente');
+    }
+
+    changeCover() {
+        this.showToast('Función de portada próximamente');
     }
 
     toggleSearch() {

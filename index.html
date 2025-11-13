@@ -209,12 +209,12 @@
             <div class="screen" id="activity">
                 <div class="activity-container">
                     <div class="activity-tabs">
-                        <button class="activity-tab active">Todo</button>
-                        <button class="activity-tab">Menciones</button>
-                        <button class="activity-tab">Me gusta</button>
+                        <button class="activity-tab active" onclick="app.filterActivity('all')">Todo</button>
+                        <button class="activity-tab" onclick="app.filterActivity('mentions')">Menciones</button>
+                        <button class="activity-tab" onclick="app.filterActivity('likes')">Me gusta</button>
                     </div>
-                    <div class="activity-list">
-                        <div class="activity-item">
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item" data-type="like">
                             <div class="activity-avatar">
                                 <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face" alt="María">
                                 <div class="activity-icon like">
@@ -226,7 +226,7 @@
                                 <span class="activity-time">2m</span>
                             </div>
                         </div>
-                        <div class="activity-item">
+                        <div class="activity-item" data-type="follow">
                             <div class="activity-avatar">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Carlos">
                                 <div class="activity-icon follow">
@@ -236,6 +236,30 @@
                             <div class="activity-content">
                                 <span class="activity-text"><strong>Carlos López</strong> comenzó a seguirte</span>
                                 <span class="activity-time">5m</span>
+                            </div>
+                        </div>
+                        <div class="activity-item" data-type="mention">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="Ana">
+                                <div class="activity-icon comment">
+                                    <i class="fas fa-at"></i>
+                                </div>
+                            </div>
+                            <div class="activity-content">
+                                <span class="activity-text"><strong>Ana García</strong> te mencionó en un thread</span>
+                                <span class="activity-time">1h</span>
+                            </div>
+                        </div>
+                        <div class="activity-item" data-type="like">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Diego">
+                                <div class="activity-icon like">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                            </div>
+                            <div class="activity-content">
+                                <span class="activity-text"><strong>Diego Ruiz</strong> le gustó tu thread</span>
+                                <span class="activity-time">3h</span>
                             </div>
                         </div>
                     </div>
@@ -265,7 +289,7 @@
                                         <span class="stat-label">Seguidores</span>
                                     </div>
                                 </div>
-                                <button class="edit-profile-btn" onclick="app.openEditProfile()">Editar perfil</button>
+                                <button class="edit-profile-btn" onclick="app.showScreen('editProfile')">Editar perfil</button>
                             </div>
                         </div>
                     </div>
@@ -314,57 +338,66 @@
         <p>Cargando Threads...</p>
     </div>
 
-    <!-- Edit Profile Modal -->
-    <div class="modal-overlay" id="editProfileModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Editar perfil</h2>
-                <button class="modal-close" onclick="app.closeEditProfile()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-content">
-                <div class="avatar-upload">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=60&h=60&fit=crop&crop=face" alt="Avatar" class="avatar-preview" id="avatarPreview">
-                    <div>
-                        <button class="upload-btn" onclick="app.uploadAvatar()">
-                            <i class="fas fa-camera"></i> Cambiar foto
+            <!-- Edit Profile Screen -->
+            <div class="screen" id="editProfile">
+                <div class="edit-profile-container">
+                    <div class="edit-profile-header">
+                        <button class="back-btn" onclick="app.showScreen('profile')">
+                            <i class="fas fa-arrow-left"></i>
                         </button>
-                        <input type="file" id="avatarInput" accept="image/*" style="display: none;" onchange="app.previewAvatar(this)">
+                        <h2 class="edit-profile-title">Editar perfil</h2>
+                        <button class="save-btn" onclick="app.saveProfile()">Guardar</button>
+                    </div>
+                    
+                    <div class="edit-profile-content">
+                        <div class="edit-cover">
+                            <div class="edit-cover-bg"></div>
+                            <button class="change-cover-btn" onclick="app.changeCover()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="edit-avatar-section">
+                            <div class="edit-avatar-wrapper">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=face" alt="Avatar" class="edit-avatar-img" id="avatarPreview">
+                                <button class="change-avatar-btn" onclick="app.uploadAvatar()">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                                <input type="file" id="avatarInput" accept="image/*" style="display: none;" onchange="app.previewAvatar(this)">
+                            </div>
+                        </div>
+                        
+                        <div class="edit-form">
+                            <div class="form-group">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-input" id="editName" value="Tu nombre" maxlength="50">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Nombre de usuario</label>
+                                <input type="text" class="form-input" id="editUsername" value="tu_usuario" maxlength="15">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Biografía</label>
+                                <textarea class="form-input form-textarea" id="editBio" maxlength="160" placeholder="Cuéntanos sobre ti...">Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.</textarea>
+                                <span class="char-count" id="bioCharCount">160</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ubicación</label>
+                                <input type="text" class="form-input" id="editLocation" value="Madrid, España" maxlength="30">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Sitio web</label>
+                                <input type="url" class="form-input" id="editWebsite" value="https://portfolio.dev" placeholder="https://">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" class="form-input" id="editName" value="Tu nombre" maxlength="50">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Nombre de usuario</label>
-                    <input type="text" class="form-input" id="editUsername" value="tu_usuario" maxlength="15">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Biografía</label>
-                    <textarea class="form-input form-textarea" id="editBio" maxlength="160" placeholder="Cuéntanos sobre ti...">Desarrollador Full Stack. Apasionado por la tecnología y la innovación. Creando el futuro una línea de código a la vez.</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Ubicación</label>
-                    <input type="text" class="form-input" id="editLocation" value="Madrid, España" maxlength="30">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Sitio web</label>
-                    <input type="url" class="form-input" id="editWebsite" value="https://portfolio.dev" placeholder="https://">
-                </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="app.closeEditProfile()">Cancelar</button>
-                <button class="btn-primary" onclick="app.saveProfile()">Guardar cambios</button>
-            </div>
-        </div>
-    </div>
+        </main>
 
     <script src="script.js"></script>
 </body>
