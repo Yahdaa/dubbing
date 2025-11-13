@@ -158,22 +158,22 @@
 
             <!-- Reels Screen -->
             <div class="screen" id="reels">
-                <div class="reels-container">
-                    <div class="reel-item active">
-                        <video class="reel-video" loop>
+                <div class="reels-container" id="reelsContainer">
+                    <div class="reel-item">
+                        <video class="reel-video" loop playsinline>
                             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                         </video>
                         <div class="reel-overlay">
                             <div class="reel-actions">
-                                <button class="reel-action-btn" onclick="app.likeReel(1)">
+                                <button class="reel-action-btn" onclick="app.toggleReelLike(this)">
                                     <i class="far fa-heart"></i>
                                     <span>1.2K</span>
                                 </button>
-                                <button class="reel-action-btn" onclick="app.commentReel(1)">
+                                <button class="reel-action-btn" onclick="app.commentReel()">
                                     <i class="far fa-comment"></i>
                                     <span>89</span>
                                 </button>
-                                <button class="reel-action-btn" onclick="app.shareReel(1)">
+                                <button class="reel-action-btn" onclick="app.shareReel()">
                                     <i class="fas fa-share"></i>
                                     <span>45</span>
                                 </button>
@@ -184,6 +184,34 @@
                                     <span>@ana_garcia</span>
                                 </div>
                                 <p class="reel-caption">Gameplay épico de Elden Ring! 🎮🔥</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reel-item">
+                        <video class="reel-video" loop playsinline>
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-overlay">
+                            <div class="reel-actions">
+                                <button class="reel-action-btn" onclick="app.toggleReelLike(this)">
+                                    <i class="far fa-heart"></i>
+                                    <span>856</span>
+                                </button>
+                                <button class="reel-action-btn" onclick="app.commentReel()">
+                                    <i class="far fa-comment"></i>
+                                    <span>42</span>
+                                </button>
+                                <button class="reel-action-btn" onclick="app.shareReel()">
+                                    <i class="fas fa-share"></i>
+                                    <span>23</span>
+                                </button>
+                            </div>
+                            <div class="reel-info">
+                                <div class="reel-user">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Carlos">
+                                    <span>@carlos_dev</span>
+                                </div>
+                                <p class="reel-caption">God of War Ragnarök boss fight! ⚡🔨</p>
                             </div>
                         </div>
                     </div>

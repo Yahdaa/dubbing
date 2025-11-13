@@ -193,12 +193,14 @@ class UberThreadsApp {
             targetScreen.style.transform = 'translateY(0)';
         }
 
-        // Play video in reels
+        // Handle reels
         if (screenName === 'reels') {
-            const video = document.querySelector('.reel-video');
-            if (video) video.play();
+            setTimeout(() => this.initReels(), 100);
         } else {
-            document.querySelectorAll('.reel-video').forEach(v => v.pause());
+            document.querySelectorAll('.reel-video').forEach(v => {
+                v.pause();
+                v.currentTime = 0;
+            });
         }
 
         document.querySelectorAll('.nav-item').forEach(item => {
@@ -749,16 +751,106 @@ class UberThreadsApp {
         }
     }
 
-    likeReel(id) {
-        this.showToast('Reel liked');
+    initReels() {
+        const container = document.getElementById('reelsContainer');
+        if (!container) return;
+
+        let currentIndex = 0;
+        const reels = container.querySelectorAll('.reel-item');
+        
+        const playCurrentReel = () => {
+            reels.forEach((reel, index) => {
+                const video = reel.querySelector('.reel-video');
+                if (index === currentIndex) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        };
+
+        container.addEventListener('scroll', () => {
+            const scrollTop = container.scrollTop;
+            const reelHeight = window.innerHeight;
+            const newIndex = Math.round(scrollTop / reelHeight);
+            
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                playCurrentReel();
+            }
+        });
+
+        playCurrentReel();
+
+        // Click to pause/play
+        reels.forEach(reel => {
+            const video = reel.querySelector('.reel-video');
+            video.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
     }
 
-    commentReel(id) {
+    toggleReelLike(button) {
+        const icon = button.querySelector('i');
+        const count = button.querySelector('span');
+        const currentCount = parseInt(count.textContent.replace('K', '000')) || 0;
+        
+        if (icon.classList.contains('fas')) {
+            icon.classList.remove('fas');
+            icon.classList.add('far');
+            button.style.color = 'var(--uber-white)';
+            count.textContent = this.formatCount(currentCount - 1);
+        } else {
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+            button.style.color = 'var(--uber-red)';
+            count.textContent = this.formatCount(currentCount + 1);
+            
+            // Heart animation
+            const heart = document.createElement('div');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.cssText = `
+                position: absolute;
+                color: var(--uber-red);
+                font-size: 80px;
+                pointer-events: none;
+                animation: heartFloat 1s ease-out forwards;
+                z-index: 1000;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            `;
+            button.closest('.reel-item').appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+    }
+
+    formatCount(num) {
+        if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'K';
+        }
+        return num.toString();
+    }
+
+    commentReel() {
         this.showToast('Comentarios próximamente');
     }
 
-    shareReel(id) {
-        this.showToast('Compartir reel');
+    shareReel() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'GameHub Reel',
+                text: 'Mira este gameplay increíble!',
+                url: window.location.href
+            });
+        } else {
+            this.showToast('Enlace copiado');
+        }
     }
 
     toggleSearch() {
